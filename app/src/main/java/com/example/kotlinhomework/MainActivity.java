@@ -12,7 +12,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
 
-    private String greetings;
+    private String greetings ;
     private String name;
     private TextView textView;
 
