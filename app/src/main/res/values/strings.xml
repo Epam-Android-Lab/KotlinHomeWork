@@ -5,4 +5,5 @@
     <string name="anon">Anon</string>
     <string name="enter_name">Enter your name</string>
     <string name="my_name">That\'s my name!</string>
+    <string name="format_string">%s, %s!</string>
 </resources>
