@@ -10,7 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivityJava extends AppCompatActivity {
 
     private String greetings;
     private String name;
@@ -34,8 +34,8 @@ public class MainActivity extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, SecondActivity.class);
-                startActivityForResult(intent, SecondActivity.GET_NAME_REQUEST_CODE);
+                Intent intent = new Intent(MainActivityJava.this, SecondActivityJava.class);
+                startActivityForResult(intent, SecondActivityJava.GET_NAME_REQUEST_CODE);
             }
         });
     }
@@ -44,8 +44,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        if (requestCode == SecondActivity.GET_NAME_REQUEST_CODE && resultCode == RESULT_OK && data != null) {
-            String nameFromData = data.getStringExtra(SecondActivity.NAME_KEY);
+        if (requestCode == SecondActivityJava.GET_NAME_REQUEST_CODE && resultCode == RESULT_OK && data != null) {
+            String nameFromData = data.getStringExtra(SecondActivityJava.NAME_KEY);
 
             if (nameFromData != null) {
                 name = nameFromData;
