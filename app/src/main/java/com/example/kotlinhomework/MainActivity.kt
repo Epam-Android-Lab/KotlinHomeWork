@@ -43,7 +43,6 @@ class MainActivity : AppCompatActivity() {
                 name = nameFromData
             }
         }
-
     }
 
     override fun onResume() {
