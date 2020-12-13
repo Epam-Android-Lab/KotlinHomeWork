@@ -7,9 +7,9 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 
 class MainActivity : AppCompatActivity() {
-    var greetings: String? = null
-    var name: String? = null
-    var textView: TextView? = null
+    private var greetings: String? = null
+    private var name: String? = null
+    private var textView: TextView? = null
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -48,7 +48,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
-        textView?.setText(String.format("%s, %s!", greetings, name))
+        textView?.text = String.format("%s, %s!", greetings, name)
     }
 
     override fun onSaveInstanceState(outState: Bundle) {
