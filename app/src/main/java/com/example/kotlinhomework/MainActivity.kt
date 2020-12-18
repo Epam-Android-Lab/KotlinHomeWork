@@ -3,14 +3,11 @@ package com.example.kotlinhomework
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
-import android.os.PersistableBundle
-import android.view.View
 import android.widget.Button
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-//import com.example.kotlinhomework.SecondActivity.NAME_KEY
 
-class MainActivity: AppCompatActivity() {
+class MainActivity : AppCompatActivity() {
     private var greetings: String? = null
     private var name: String? = null
     private var textView: TextView? = null
@@ -20,11 +17,7 @@ class MainActivity: AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         greetings = getString(R.string.hello)
-        if (savedInstanceState != null && savedInstanceState.getString(NAME_KEY) != null) {
-            name = savedInstanceState.getString(NAME_KEY)
-        } else {
-            name = "Anon"
-        }
+        name = if (savedInstanceState != null && savedInstanceState.getString(NAME_KEY) != null) savedInstanceState.getString(NAME_KEY) else "Anon"
 
         textView = findViewById(R.id.textViewHello)
         val button = findViewById<Button>(R.id.buttonNameYourSelf)
@@ -38,11 +31,10 @@ class MainActivity: AppCompatActivity() {
     override protected fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
 
-        if (requestCode == SecondActivity.GET_NAME_REQUEST_CODE && resultCode == Activity.RESULT_OK && data != null) {
-            var nameFromData: String? = data.getStringExtra(SecondActivity.NAME_KEY)
-
-            if (nameFromData != null)
-                name = nameFromData
+        data?.let {
+            if (requestCode == SecondActivity.GET_NAME_REQUEST_CODE && resultCode == Activity.RESULT_OK) {
+                name = data.getStringExtra(SecondActivity.NAME_KEY)
+            }
         }
     }
 
@@ -57,6 +49,6 @@ class MainActivity: AppCompatActivity() {
     }
 
     companion object {
-        var NAME_KEY: String = "com.example.kotlinhomework.MainActivity.NAME_KEY"
+        const val NAME_KEY: String = "com.example.kotlinhomework.MainActivity.NAME_KEY"
     }
 }
